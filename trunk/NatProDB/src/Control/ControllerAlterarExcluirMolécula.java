@@ -204,9 +204,9 @@ public class ControllerAlterarExcluirMolécula implements ActionListener, MouseL
         peso = Float.parseFloat(goToString);
         formula = (String) tabel.getValueAt(indice, 10);
         Object p = tabel.getValueAt(indice, 11);
-        goToString = o.toString();
+        goToString = p.toString();
         logp = Float.parseFloat(goToString);
-        System.out.println("logp:" + logp);
+        System.out.println("Valor capturado logp:" + logp);
         // referencia = (String) tabel.getValueAt(indice, 14);
         model = (DefaultTableModel) tabel.getModel();
 

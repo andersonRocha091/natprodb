@@ -7,6 +7,7 @@ package Control;
 import Control.Main;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.Statement;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -16,6 +17,8 @@ import java.io.UnsupportedEncodingException;
 import java.lang.Class;
 import java.net.URLDecoder;
 import java.nio.channels.FileChannel;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
@@ -137,6 +140,11 @@ public class ControllerCadastraMolecula implements ActionListener {
             Logger.getLogger(ControllerCadastraMolecula.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+   
+    
+        
+      
     
    
     @Override

@@ -1,5 +1,6 @@
 package model;
 
+import java.io.File;
 import java.lang.String;
 import java.sql.*;
 import java.util.Vector;
@@ -13,6 +14,7 @@ public class SQLite {
     private Statement stm;
     private ResultSet rs = null;
     private boolean valid;
+   
    
    
     public SQLite(String arquivo) throws SQLException, ClassNotFoundException {
@@ -108,6 +110,14 @@ public class SQLite {
         return result;
     }
      
+     public void atualizaCaminho(String nomeiupac,String caminho){
+        try {
+            stm.executeUpdate("UPDATE molecula set Localizacao_arquivo='" + caminho + "' where Nome_iupac ='" + nomeiupac + "';");
+        } catch (SQLException ex) {
+            Logger.getLogger(SQLite.class.getName()).log(Level.SEVERE, null, ex);
+        }
+     
+     }
      public void atualizarMolecula(String codigo, String nome, String nomeiupac, String familia,
             String especie,String smile,int hba,int hbd,String atividade, String localizacao,String localizacao_arq, float pesoMolecular,
             String formulaMolecular, float logp, String referencia, String oldNomeIupac,String data,String hora, String tipo) {
@@ -234,6 +244,38 @@ public class SQLite {
         return rs;
 
     }
+     
+     public void atualizarArquivos() throws SQLException{
+     
+                stm.executeUpdate("UPDATE molecula set Localizacao_arquivo='" + "Molecules"+File.separator+"VE0AHA0SF.mol"+ "' where Nome_iupac ='" + "1-methyl-4-(propan-2-yl)benzene" + "';");
+                stm.executeUpdate("UPDATE molecula set Localizacao_arquivo='" + "Molecules"+File.separator+"VE0BHA0SF.mol"+ "' where Nome_iupac ='" + "2-[4-(propan-2-yl)phenyl]ethan-1-ol" + "';");
+                stm.executeUpdate("UPDATE molecula set Localizacao_arquivo='" + "Molecules"+File.separator+"VE0CHA0SF.mol"+ "' where Nome_iupac ='" + "2-(acetyloxy)benzoic acid" + "';");
+                stm.executeUpdate("UPDATE molecula set Localizacao_arquivo='" + "Molecules"+File.separator+"VE0DHA0AF.mol"+ "' where Nome_iupac ='" + "1-[2-(6-acetyl-2,3,4-trihydroxyphenyl)-3,4,5- trihydroxyphenyl]ethan-1-one " + "';");          
+                stm.executeUpdate("UPDATE molecula set Localizacao_arquivo='" + "Molecules"+File.separator+"VE0GHA0AF.mol"+ "' where Nome_iupac ='" + "(1S,10R,11S)-5-methoxy-6,12,12- trimethyltetracyclo[8.5.0.0^{1,11}.0^{3,8}]pentadeca- 3(8),4,6-triene-2,9-dione" + "';");
+                stm.executeUpdate("UPDATE molecula set Localizacao_arquivo='" + "Molecules"+File.separator+"VE0HHA0AF.mol"+ "' where Nome_iupac ='" + "(11R,15S)-15-hydroxy-5-methoxy-6,12,12- trimethyltricyclo[9.4.0.0^{3,8}]pentadeca- 1,3(8),4,6-tetraen-9-one" + "';");
+                stm.executeUpdate("UPDATE molecula set Localizacao_arquivo='" + "Molecules"+File.separator+"VE0IHA0AF.mol"+ "' where Nome_iupac ='" + "(11R)-6,12,12- trimethyltricyclo[9.4.0.0^{3,8}]pentadeca- 1,3(8),4,6-tetraen-5-ol" + "';");
+                stm.executeUpdate("UPDATE molecula set Localizacao_arquivo='" + "Molecules"+File.separator+"VE0JHA0AF.mol"+ "' where Nome_iupac ='" + "(8R)-14-methoxy-7,7,13- trimethyltricyclo[9.4.0.0^{3,8}]pentadeca- 1(11),2,12,14-tetraene-4,10-dione" + "';");
+                stm.executeUpdate("UPDATE molecula set Localizacao_arquivo='" + "Molecules"+File.separator+"VE0KHA0AF.mol"+ "' where Nome_iupac ='" + "(1R,3S,12R)-6-methoxy-7,12,13,13-tetramethyl-2- oxatetracyclo[10.4.0.0^{1,3}.0^{4,9}]hexadeca- 4(9),5,7-trien-10-one" + "';");
+                stm.executeUpdate("UPDATE molecula set Localizacao_arquivo='" + "Molecules"+File.separator+"VE0LHA0AF.mol"+ "' where Nome_iupac ='" + "(11R,15S)-15-hydroxy-5-methoxy-6,12,12- trimethyltricyclo[9.4.0.0^{3,8}]pentadeca- 1,3(8),4,6-tetraen-9-one 2" + "';");
+                stm.executeUpdate("UPDATE molecula set Localizacao_arquivo='" + "Molecules"+File.separator+"VE0MHA0AF.mol"+ "' where Nome_iupac ='" + "(1S,11S)-5-methoxy-6,12,12- trimethyltricyclo[9.4.0.0^{3,8}]pentadeca-3(8),4,6- trien-9-one" + "';");
+                stm.executeUpdate("UPDATE molecula set Localizacao_arquivo='" + "Molecules"+File.separator+"VE0NHA0SF.mol"+ "' where Nome_iupac ='" + "(2E)-3-(4-hydroxy-3-methoxyphenyl)-N-[2-(1H- imidazol-4-yl)ethyl]prop-2-enamide " + "';");
+                stm.executeUpdate("UPDATE molecula set Localizacao_arquivo='" + "Molecules"+File.separator+"VE0OHA0SF.mol"+ "' where Nome_iupac ='" + "(11S)-5-hydroxy-6,12,12- trimethyltricyclo[9.4.0.0^{3,8}]pentadeca- 1,3,5,7,14-pentaen-9-one" + "';");
+                stm.executeUpdate("UPDATE molecula set Localizacao_arquivo='" + "Molecules"+File.separator+"VE0PHA0SF.mol"+ "' where Nome_iupac ='" + "(4aS,7R,8S,8aR)-8-[2-(furan-3-yl)ethyl]-4,7,8- trimethyl-1,2,4a,5,6,7,8,8a-octahydronaphthalen-2- one " + "';");
+                stm.executeUpdate("UPDATE molecula set Localizacao_arquivo='" + "Molecules"+File.separator+"VE0RHA0SF.mol"+ "' where Nome_iupac ='" + "[(1R,2R,4aS,8aR)-1-[2-(furan-3-yl)ethyl]-2,5- dimethyl-7-oxo-1,2,3,4,4a,7,8,8a- octahydronaphthalen-1-yl]methyl acetate " + "';");
+                stm.executeUpdate("UPDATE molecula set Localizacao_arquivo='" + "Molecules"+File.separator+"VE0SHA0SF.mol"+ "' where Nome_iupac ='" + "(1R,2R,5R,8R,9S,10S,13R,14R,17S,19R)- 1,2,5,14,18,18-hexamethyl-8-(prop-1-en-2- yl)pentacyclo[11.8.0.0^{2,10}.0^{5,9}.0^{14,19}]henicosan- 17-yl acetate" + "';");
+                stm.executeUpdate("UPDATE molecula set Localizacao_arquivo='" + "Molecules"+File.separator+"VE0THA0SF.mol"+ "' where Nome_iupac ='" + "7-[(dimethylamino)methyl]-5,12-dimethoxy-2,9- dioxatetracyclo[6.6.2.0^{4,16}.0^{11,15}]hexadeca- 1(15),4(16),5,7,11,13-hexaene-3,10-dione" + "';");
+                stm.executeUpdate("UPDATE molecula set Localizacao_arquivo='" + "Molecules"+File.separator+"VE0UHA0SF.mol"+ "' where Nome_iupac ='" + "(3aR,6aS,10R,10aS,10bS)-10a-hydroxy-2,10-dimethyl- 3,8-dioxo-7-(propan-2-ylidene)- 3H,3aH,4H,6aH,7H,8H,9H,10H,10aH,10bH- cyclohexa[e]azulen-5-yl acetate " + "';");
+                stm.executeUpdate("UPDATE molecula set Localizacao_arquivo='" + "Molecules"+File.separator+"VE0VHA0SF.mol"+ "' where Nome_iupac ='" + "(9R)-4,5,15,16-tetramethoxy-10-methyl-10- azatetracyclo[7.7.1.0^{2,7}.0^{13,17}]heptadeca- 1(17),2,4,6,13,15-hexaen-3-ol" + "';");
+                stm.executeUpdate("UPDATE molecula set Localizacao_arquivo='" + "Molecules"+File.separator+"VE0WHA0SF.mol"+ "' where Nome_iupac ='" + "(5S,12bR)-3,10-dimethoxy-5-methyl-7,8,12b,13- tetrahydro-5H-6000000-azatetraphene-2,11-diol " + "';");
+                stm.executeUpdate("UPDATE molecula set Localizacao_arquivo='" + "Molecules"+File.separator+"VE0XHA0SF.mol"+ "' where Nome_iupac ='" + "(1R,9R)-3-hydroxy-4,13-dimethoxy-17- azatetracyclo[7.5.3.0^{1,10}.0^{2,7}]heptadeca- 2(7),3,5,10,13-pentaen-12-one" + "';");
+                stm.executeUpdate("UPDATE molecula set Localizacao_arquivo='" + "Molecules"+File.separator+"VE0YHA0AF.mol"+ "' where Nome_iupac ='" + "(4R)-4-hydroxy-4-[(1E,3S)-3-hydroxybut-1-en-1-yl]- 3,5,5-trimethylcyclohex-2-en-1-one " + "';");
+                stm.executeUpdate("UPDATE molecula set Localizacao_arquivo='" + "Molecules"+File.separator+"VE0ZHA0AF.mol"+ "' where Nome_iupac ='" + "(4aR,5S,6R,8aR)-5-[2-(furan-3-yl)ethyl]-5,6,8a- trimethyl-3,4,4a,5,6,7,8,8a-octahydronaphthalene-1- carboxylic acid " + "';");
+                stm.executeUpdate("UPDATE molecula set Localizacao_arquivo='" + "Molecules"+File.separator+"VE0XGA0SF.mol"+ "' where Nome_iupac ='" + "(1R,4S,9R,10R,13R)-7-hydroxy-13-(hydroxymethyl)- 5,5,9- trimethyltetracyclo[11.2.1.0^{1,10}.0^{4,9}]hexadeca- 6,14-dien-8-one" + "';");
+                stm.executeUpdate("UPDATE molecula set Localizacao_arquivo='" + "Molecules"+File.separator+"VE0YGA0AF.mol"+ "' where Nome_iupac ='" + "(2R,3S)-2-(3,4-dihydroxyphenyl)-3,4-dihydro-2H-1- benzopyran-3,5,7-triol 2" + "';");
+                stm.executeUpdate("UPDATE molecula set Localizacao_arquivo='" + "Molecules"+File.separator+"VE0ZGA0SF.mol"+ "' where Nome_iupac ='" + "(1R,4S,5S,9S,10R,13S)-7-hydroxy-5-(hydroxymethyl)- 5,9,13- trimethyltetracyclo[11.2.1.0^{1,10}.0^{4,9}]hexadeca- 6,14-dien-8-one" + "';");
+               
+     
+     }
    
    public void excluirUsuario(String login) {
         try {

@@ -254,9 +254,9 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="3">
-                <StringItem index="0" value="Sintetic"/>
-                <StringItem index="1" value="Semi-Sintetic"/>
-                <StringItem index="2" value="Natural"/>
+                <StringItem index="0" value="Natural"/>
+                <StringItem index="1" value="Sintetic"/>
+                <StringItem index="2" value="Semi-Sintetic"/>
               </StringArray>
             </Property>
           </Properties>
