@@ -98,7 +98,7 @@ public class JanelaCadastrarMolecula extends javax.swing.JFrame {
 
         labelNomeIupac.setText(" IUPAC Name(*):");
 
-        comboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sintetic", "Semi-Sintetic", "Natural" }));
+        comboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Natural", "Sintetic", "Semi-Sintetic" }));
         comboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboBoxActionPerformed(evt);

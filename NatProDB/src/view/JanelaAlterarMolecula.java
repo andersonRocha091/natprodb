@@ -420,7 +420,7 @@ public class JanelaAlterarMolecula extends javax.swing.JFrame {
     }
     public float getLogp() {
         float log;
-        log= Float.parseFloat(campoPesoMolecular.getText()); 
+        log= Float.parseFloat(campoLogP.getText()); 
         return log;
     }
     public String getReferencia() {
