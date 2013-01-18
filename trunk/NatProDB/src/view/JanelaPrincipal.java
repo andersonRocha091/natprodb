@@ -25,7 +25,7 @@ public class JanelaPrincipal extends JFrame {
     private Icon image;
     private JMenu moleculas,usuario,sobre;
     private JMenuBar menuBar;
-    private JMenuItem itemCadastraMolecula, itemAlterarRemoverMol, itemSair, itemCadastraUsuario,itemAleteraRemoveUsuario, itemExibirTodos,itemExibirTodas,itemSobre;
+    private JMenuItem itemSimilaridade,itemCadastraMolecula, itemAlterarRemoverMol, itemSair, itemCadastraUsuario,itemAleteraRemoveUsuario, itemExibirTodos,itemExibirTodas,itemSobre;
              
     public JanelaPrincipal(ControllerWindowPrincipal controller){
     
@@ -33,6 +33,7 @@ public class JanelaPrincipal extends JFrame {
         
         moleculas = new JMenu("Molecules"); // criação do item e opções para moléculas.
         itemCadastraMolecula = new JMenuItem("New");
+        itemSimilaridade = new JMenuItem("Similarity");
         itemCadastraMolecula.addActionListener(controller);
         itemAlterarRemoverMol = new JMenuItem("Change/Exclude");
         itemAlterarRemoverMol.addActionListener(controller);
@@ -42,6 +43,8 @@ public class JanelaPrincipal extends JFrame {
         itemExibirTodas.addActionListener(controller);
         itemSair = new JMenuItem("Exit");
         itemSair.addActionListener(controller);
+        itemSimilaridade.addActionListener(controller);
+        moleculas.add(itemSimilaridade);
         moleculas.add(itemCadastraMolecula);
         moleculas.add(itemAlterarRemoverMol);
         moleculas.add(itemExibirTodas);
@@ -114,4 +117,9 @@ public class JanelaPrincipal extends JFrame {
     public JMenuItem getItemSobre() {
         return itemSobre;
     }
+
+    public JMenuItem getItemSimilaridade() {
+        return itemSimilaridade;
+    }
+    
 }
