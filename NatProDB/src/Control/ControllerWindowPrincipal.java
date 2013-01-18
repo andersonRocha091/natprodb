@@ -103,5 +103,9 @@ public class ControllerWindowPrincipal implements ActionListener {
             ControllerAlterarExcluirMolécula controller = new ControllerAlterarExcluirMolécula(bank);
             controller.showWindow();
         }
+        else if(e.getSource()==principal.getItemSimilaridade()){
+            ControllerComputeSimilarity controller = new ControllerComputeSimilarity(bank);
+            controller.shoWindow();
+        }
     }
 }
