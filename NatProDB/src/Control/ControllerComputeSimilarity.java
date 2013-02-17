@@ -6,6 +6,9 @@ package Control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.math.MathContext;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
@@ -38,10 +41,10 @@ public class ControllerComputeSimilarity implements ActionListener {
     private boolean found = false;
     private int numLinA = 0;
     private int numLinB = 0;
-    private float acumulator = 0;
+    private float acumulator;
     private int subAeB=0;
-    private float num;
-    private float tanimotosCoeficient=0;
+    private BigDecimal num;
+    private float tanimotosCoeficient, numResult;
 
     public ControllerComputeSimilarity(SQLite bank) {
         this.bank = bank;
@@ -156,23 +159,29 @@ public class ControllerComputeSimilarity implements ActionListener {
                      }
                      
                    // num =((float)(1-(subAeB/(numLinA+numLinB))));
+                     BigDecimal a = new BigDecimal(subAeB);  
+                     BigDecimal b = new BigDecimal(numLinA+numLinB); 
+                     //BigDecimal constante = new BigDecimal("1");
+                     num = a.divide(b, MathContext.DECIMAL32);
+                     numResult =(1 - num.floatValue());
+                     
                     //num =(4/2);
-                     num = Math.round(1/3); //testando
-                    acumulator+=((float)num);
+                     //num = Math.round(1/3); //testando
+                    acumulator+=numResult;
                     
                     
                     
                     System.out.println("Numero de Lingo:"+i+"em A:"+numLinA+"em B:"+numLinB);
-                    System.out.println("numerador:"+num);
-                     System.out.println("\n Acumulador:"+acumulator);
+                    System.out.println("numerador:"+numResult);
+                     System.out.println("Acumulador:"+acumulator+"\n");
                     numLinA=0;
                     numLinB=0;
-                    num=0;
+                    numResult = 0;
                 }
-                tanimotosCoeficient = (float)acumulator/union.size();    
+                tanimotosCoeficient = acumulator/union.size();    
             System.out.println("\n Acumulador:"+acumulator);
             System.out.println("\n Coeficiente de Tanimoto:"+tanimotosCoeficient);
-            acumulator =0;
+            acumulator=0;
             } else {
 
                 viewComputeSim.limpaTabela();
