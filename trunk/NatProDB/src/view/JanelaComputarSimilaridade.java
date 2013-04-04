@@ -43,7 +43,8 @@ public class JanelaComputarSimilaridade extends javax.swing.JFrame {
         //botãoAlterar.addActionListener(controller);
         botaoClear.addActionListener(controller);
         botaoSearch.addActionListener(controller);
-        checkInBank.addActionListener(controller);
+        checksim.addActionListener(controller);
+        checksim.addActionListener(controller);
         rolagem.setViewportView(tabela);
     }
 
@@ -119,12 +120,20 @@ public class JanelaComputarSimilaridade extends javax.swing.JFrame {
     public JTextField getCampoBusca() {
         return campoBusca;
     }
+
+    public JCheckBox getSimilarity() {
+        return checksim;
+    }
     
     public JTable getTable(){
     return tabela;
     }
     public JTextField getCampoInsereMolecula(){
     return campoInsereMolecula;
+    }
+
+    public JCheckBox getChecksim() {
+        return checksim;
     }
     
 
@@ -174,13 +183,14 @@ public class JanelaComputarSimilaridade extends javax.swing.JFrame {
         mainPanel = new javax.swing.JPanel();
         rolagem = new javax.swing.JScrollPane();
         jLabel1 = new javax.swing.JLabel();
-        checkInBank = new javax.swing.JCheckBox();
+        checksim = new javax.swing.JCheckBox();
         botaoClear = new javax.swing.JButton();
         botaoSearch = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         campoBusca = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
+        checkInBank = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle(".:: NatProDB - Alterar/Excluir Usuário::.");
@@ -213,8 +223,8 @@ public class JanelaComputarSimilaridade extends javax.swing.JFrame {
         jLabel1.setText("Smile of target:");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 21, -1, -1));
 
-        checkInBank.setText("Search in database");
-        getContentPane().add(checkInBank, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, -1, -1));
+        checksim.setText("Check similarity.");
+        getContentPane().add(checksim, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 70, -1, -1));
 
         botaoClear.setText("Clear");
         getContentPane().add(botaoClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 20, -1, -1));
@@ -234,6 +244,9 @@ public class JanelaComputarSimilaridade extends javax.swing.JFrame {
         jLabel3.setText("%");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, -1, -1));
 
+        checkInBank.setText("Search in database");
+        getContentPane().add(checkInBank, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
     /**
@@ -245,6 +258,7 @@ public class JanelaComputarSimilaridade extends javax.swing.JFrame {
     private javax.swing.JTextField campoBusca;
     private javax.swing.JTextField campoInsereMolecula;
     private javax.swing.JCheckBox checkInBank;
+    private javax.swing.JCheckBox checksim;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

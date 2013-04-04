@@ -9,6 +9,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.nio.channels.FileChannel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,6 +25,7 @@ import model.Lingo;
 import model.Mysql;
 import model.SQLite;
 import view.*;
+import com.ggasoftware.indigo.*;
 
 /**
  *
@@ -40,37 +43,29 @@ public class Main {
     private static FileChannel destChannel = null;
     
      public static void main(String[] args) throws SQLException, FileNotFoundException, IOException {
-        try {
+       
+         
+         
+         try {
             bank = new SQLite("molecula.db");
-           ResultSet result =  bank.nomePorPartesMol("Benzene-1,2-diol"); //inicio do algoritmo.
-           String sorrir = (String)result.getObject("Smile");
-           System.out.println(sorrir);
-           q=7;
-           char[] arrayChar = sorrir.toCharArray(); //conversao do smile em cadeia de char;
-           Lingo[] listalingo = new Lingo[arrayChar.length-(q-1)]; // vetor de lingos
-           
-           for(int i=0;i<arrayChar.length-(q-1);i++){ // quebra ddo smile em n-(q-1) lingos
-               
-               String d = new String();
-               int k=0;
-               for(int j=0;j<=q-1;j++){
-                   
-                    char a = arrayChar[i+k];
-                    d += Character.toString(a); 
-                    k++;
-               }
-                  
-               
-               Lingo lin = new Lingo(d);
-               listalingo[i] = lin;
-               System.out.println(""+listalingo[i].getLin());
-             // String lingos = new String(a+b+c); 
-              //Lingo lingo = new Lingo(); 
-             //listalingo[i] = ;  
-           }
-           
-           
-           
+           BigDecimal a = new BigDecimal("1");  
+           BigDecimal b = new BigDecimal("3");  
+            System.out.println(a.divide(b, MathContext.DECIMAL32));
+            Indigo indigo = new Indigo();
+            IndigoObject  mol1 = indigo.loadMolecule("CC[C@H]1CC[C@H](O)CC1");
+     // IndigoObject mol1 = indigo.loadMolecule("CN2C(=O)N(C)C(=O)C1=C2N=CN1C");
+           IndigoObject mol2 = indigo.loadMolecule("CCCC1(CCC(CC1)(C)C)O");
+         // mol1.aromatize();
+          // mol2.aromatize();
+           mol2 = indigo.loadMolecule(mol2.canonicalSmiles());
+           mol1 = indigo.loadMolecule(mol1.canonicalSmiles());
+         System.out.println("\n TAnimoto:"+indigo.similarity(mol1, mol2,"tanimoto"));
+          // System.out.println("molecula digital:"+mol1.fingerprint());
+ 
+     
+      assert mol1.canonicalSmiles().equals(mol2.canonicalSmiles());
+            System.out.println("\nsmile canonical1:"+mol1.canonicalSmiles());
+           System.out.println("\nsmile canonical2:"+mol2.canonicalSmiles());
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
