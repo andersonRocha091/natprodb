@@ -23,6 +23,7 @@ import model.Lingo;
 import model.SQLite;
 import org.w3c.dom.events.MouseEvent;
 import view.JanelaComputarSimilaridade;
+import com.ggasoftware.indigo.*;
 
 /**
  *
@@ -75,9 +76,19 @@ public class ControllerComputeSimilarity implements ActionListener {
                 smileToCompare = viewComputeSim.getCampoBusca().getText();
                 gerarProfileLINGO('a', smileToCompare, 4); //gerar o descritor da Molécula A (a ser comparada).
 
+                // computação da similaridade usando biblioteca Indigo
+               Indigo indigo = new Indigo();
+                IndigoObject mol1 = indigo.loadMolecule(smileToCompare);
                 smileToCompare = viewComputeSim.getCampoInsereMolecula().getText();
+                
                 gerarProfileLINGO('b', smileToCompare, 4);//gerar o descritor da Molécula B (Alvo).
-
+                IndigoObject mol2 = indigo.loadMolecule(smileToCompare);
+                
+                mol1 = indigo.loadMolecule(mol1.canonicalSmiles());
+                mol2 = indigo.loadMolecule(mol2.canonicalSmiles());
+                
+                
+                
                 List<Lingo> union = new Vector<Lingo>(); //Vetor conjunto união de todas as LINGOS de A e B
 
                 /*for (int i = 0; i <= (profileA.length) - 1; i++) {
@@ -180,7 +191,13 @@ public class ControllerComputeSimilarity implements ActionListener {
                 }
                 tanimotosCoeficient = acumulator/union.size();    
             System.out.println("\n Acumulador:"+acumulator);
-            System.out.println("\n Coeficiente de Tanimoto:"+tanimotosCoeficient);
+            System.out.println("\n Coeficiente de Tanimoto LINGO:"+tanimotosCoeficient);
+            System.out.println("\n TAnimoto:"+indigo.similarity(mol1, mol2,"tanimoto"));
+            
+            
+            
+        
+            
             acumulator=0;
             } else {
 
